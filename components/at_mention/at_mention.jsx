@@ -28,8 +28,6 @@ export default class AtMention extends React.PureComponent {
     constructor(props) {
         super(props);
 
-        this.hideProfilePopover = this.hideProfilePopover.bind(this);
-
         this.state = {
             user: this.getUserFromMentionName(props)
         };
@@ -41,10 +39,6 @@ export default class AtMention extends React.PureComponent {
                 user: this.getUserFromMentionName(nextProps)
             });
         }
-    }
-
-    hideProfilePopover() {
-        this.refs.overlay.hide();
     }
 
     getUserFromMentionName(props) {
@@ -83,7 +77,6 @@ export default class AtMention extends React.PureComponent {
         return (
             <span>
                 <OverlayTrigger
-                    ref='overlay'
                     trigger='click'
                     placement='left'
                     rootClose={true}
@@ -92,7 +85,6 @@ export default class AtMention extends React.PureComponent {
                             <ProfilePopover
                                 user={user}
                                 src={Client4.getProfilePictureUrl(user.id, user.last_picture_update)}
-                                hide={this.hideProfilePopover}
                                 isRHS={this.props.isRHS}
                                 hasMention={this.props.hasMention}
                             />

@@ -29,15 +29,10 @@ export default class ProfilePicture extends React.PureComponent {
         hasMention: PropTypes.bool
     };
 
-    hideProfilePopover = () => {
-        this.refs.overlay.hide();
-    }
-
     render() {
         if (this.props.user) {
             return (
                 <OverlayTrigger
-                    ref='overlay'
                     trigger='click'
                     placement='right'
                     rootClose={true}
@@ -48,7 +43,6 @@ export default class ProfilePicture extends React.PureComponent {
                                 src={this.props.src}
                                 status={this.props.status}
                                 isBusy={this.props.isBusy}
-                                hide={this.hideProfilePopover}
                                 isRHS={this.props.isRHS}
                                 hasMention={this.props.hasMention}
                             />
